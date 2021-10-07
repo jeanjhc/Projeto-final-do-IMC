@@ -36,7 +36,9 @@ class UsuarioDao(val context: Context, val usuario: Usuario?) {
     }
 
     fun autenticar(email: String, senha: String) : Boolean {
+
         // *** Obter uma instância de leitura do banco
+
         val db = dbHelper.readableDatabase
 
         // *** Determinar quais são as colunas da tabela
@@ -116,8 +118,11 @@ class UsuarioDao(val context: Context, val usuario: Usuario?) {
             var bitmap = converterByteArrayParaBitmap(cursor.getBlob(fotoIndex))
             editor.putString("foto", converterBitmapParaBase64(bitmap))
 
+
             editor.apply()
+
         }
+
 
         db.close()
         return autenticado
